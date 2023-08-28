@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './person_spec'
 # class student inherite person class
 class Student < Person

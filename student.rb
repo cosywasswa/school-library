@@ -1,4 +1,4 @@
-require './person_spec'
+require './person'
 # class student inherite person class
 class Student < Person
   def initialize(age, classroom, name = 'Unknown', parent_permission: true)

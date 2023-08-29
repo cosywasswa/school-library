@@ -47,6 +47,7 @@
 - **Create Person, Student and Teacher classes**
 - **Person class inheritance**
 - **Use class decorations**
+- **Setup associations**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -119,7 +120,7 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[set up associations]**
+- [ ] **[Create basic UI]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

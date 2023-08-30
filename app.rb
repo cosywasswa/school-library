@@ -33,7 +33,6 @@ class App
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
   def find_options
     options = gets.chop
     case options
@@ -49,7 +48,6 @@ class App
       find_options
     end
   end
-  # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_all_books

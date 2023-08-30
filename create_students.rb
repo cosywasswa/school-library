@@ -5,7 +5,6 @@ require './student'
 require './teacher'
 require './classroom'
 
-# rubocop:disable Metrics/MethodLength
 def create_student
   print 'Age: '
   age = gets.chomp
@@ -21,4 +20,3 @@ def create_student
   puts 'Person created successfully'
   list_options
 end
-# rubocop:enable Metrics/MethodLength

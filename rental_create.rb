@@ -6,8 +6,6 @@ require './teacher'
 require './classroom'
 require './app'
 
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/AbcSize
 def create_rental
   if @books.empty?
     puts 'No books in store'
@@ -40,5 +38,3 @@ def create_rental
     list_options
   end
 end
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/MethodLength

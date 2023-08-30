@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# rubocop:disable Lint/ScriptPermission
 require './app'
 
 class Main

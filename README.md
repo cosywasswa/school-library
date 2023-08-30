@@ -27,7 +27,7 @@
 
 # 📖 School Library <a name="about-project"></a>
 
-**School Library** is a ruby program that implements object oriented programming using classes and objects to record books and who borrows them.
+**School Library** is a ruby program that implements object oriented programming using classes and objects to record books, who borrows them and display on a console UI.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -48,6 +48,7 @@
 - **Person class inheritance**
 - **Use class decorations**
 - **Setup associations**
+- **Basic UI**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,7 +121,7 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Create basic UI]**
+- [ ] **[Code refactoring]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

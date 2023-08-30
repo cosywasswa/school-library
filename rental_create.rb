@@ -8,19 +8,19 @@ require './app'
 
 def create_rental
   puts 'Select a book from the following list by number'
-  @books.each_with_index do |book, index|
-    puts "#{index}) Title: #{book.title}, Author: #{book.author}"
-    book_index = gets.chomp.to_i
+  @books.each_with_index do |book, book_index|
+    puts "#{book_index}) Title: #{book.title}, Author: #{book.author}"
+    chosen_book_index = gets.chomp.to_i
     puts 'Select a person from the following list by number'
-    @persons.each_with_index do |person, index|
-      puts "#{index}) Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+    @persons.each_with_index do |person, person_index|
+      puts "#{person_index}) Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
     end
-    person_index = gets.chomp.to_i
+    chosen_person_index = gets.chomp.to_i
 
     print 'Date (yyyy/mm/dd) '
     date = gets.chomp
 
-    @rentals.push(Rental.new(date, @books[book_index], @persons[person_index]))
+    @rentals.push(Rental.new(date, @books[chosen_book_index], @persons[chosen_person_index]))
     puts 'Rental created successfully'
     list_options
   end

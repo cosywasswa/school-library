@@ -7,14 +7,13 @@ require './classroom'
 require './app'
 
 def create_rental
-    puts 'Select a book from the following list by number'
-    @books.each_with_index do |book, index|
-      puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+  puts 'Select a book from the following list by number'
+  @books.each_with_index do |book, index|
+    puts "#{index}) Title: #{book.title}, Author: #{book.author}"
     book_index = gets.chomp.to_i
-      puts 'Select a person from the following list by number'
-      @persons.each_with_index do |person, index|
-        puts "#{index}) Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
-    
+    puts 'Select a person from the following list by number'
+    @persons.each_with_index do |person, index|
+      puts "#{index}) Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
     end
     person_index = gets.chomp.to_i
 

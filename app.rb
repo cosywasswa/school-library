@@ -81,7 +81,7 @@ class App
     title = gets.chop
     print 'Author: '
     author = gets.chop
-    @books.push(Book.new(title, author))
+    @books.push(Book.new(author, title))
     puts 'Book created successfully'
     list_options
   end

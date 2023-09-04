@@ -1,10 +1,12 @@
 require './app'
+require './menu'
 
 class Main
   def main
     puts 'Welcome to School Library App!'
     app = App.new
-    app.list_options
+    menu = Menu.new
+    menu.find_options(app)
   end
 end
 

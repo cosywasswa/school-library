@@ -4,19 +4,27 @@ require './rental'
 require './student'
 require './teacher'
 require './classroom'
+require './menu'
 
-def create_student
-  print 'Age: '
-  age = gets.chomp
-  print 'Name: '
-  name = gets.chomp
-  print 'Has parent permission? [Y/N] '
-  parent_permission = gets.chomp.downcase
-  if parent_permission == 'y'
-    @persons.push(Student.new(true, age, name))
-  else
-    @persons.push(Student.new(false, age, name))
+class StudentOperations
+  def initialize(persons)
+    @persons = persons
   end
-  puts 'Person created successfully'
-  list_options
+
+  def create_student(app, _persons)
+    menu = Menu.new
+    print 'Age: '
+    age = gets.chomp
+    print 'Name: '
+    name = gets.chomp
+    print 'Has parent permission? [Y/N] '
+    parent_permission = gets.chomp.downcase
+    if parent_permission == 'y'
+      @persons.push(Student.new(true, age, name))
+    else
+      @persons.push(Student.new(false, age, name))
+    end
+    puts 'Person created successfully'
+    menu.find_options(app)
+  end
 end

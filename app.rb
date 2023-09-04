@@ -4,10 +4,9 @@ require './rental'
 require './student'
 require './teacher'
 require './classroom'
-require './rental_create'
 require './create_teacher'
-require './list_rentals'
 require './create_students'
+require './menu'
 
 class App
   attr_accessor :rentals, :students, :books, :persons
@@ -17,49 +16,19 @@ class App
     @students = []
     @books = []
     @persons = []
+    @menu = Menu.new
   end
-
-  def list_options
-    puts ' '
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
-    find_options
-  end
-
-  # rubocop:disable Metrics/CyclomaticComplexity
-  def find_options
-    options = gets.chop
-    case options
-    when '1' then list_all_books
-    when '2' then list_all_people
-    when '3' then create_person
-    when '4' then create_book
-    when '5' then create_rental
-    when '6' then list_all_rentals
-    when '7' then stop
-    else
-      puts 'Invalid selection, select between 1 to 7'
-      find_options
-    end
-  end
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_all_books
     if @books.empty?
       puts 'No books in store'
       puts 'select 4 to create a new book'
-      find_options
+      @menu.find_options(self)
     else
       @books.each do |book|
         puts "Title: \"#{book.title}\" Author: #{book.author}"
       end
-      list_options
+      @menu.find_options(self)
     end
   end
 
@@ -67,12 +36,12 @@ class App
     if @persons.empty?
       puts 'No People in the correction'
       puts 'select 3 to add a new person'
-      find_options
+      @menu.find_options(self)
     else
       @persons.each do |person|
         puts "#{[person.class]} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       end
-      list_options
+      @menu.find_options(self)
     end
   end
 
@@ -83,7 +52,7 @@ class App
     author = gets.chop
     @books.push(Book.new(title, author))
     puts 'Book created successfully'
-    list_options
+    @menu.find_options(self)
   end
 
   def create_person
@@ -91,14 +60,41 @@ class App
     choice = gets.chomp
     case choice
     when '1'
-      create_student
+      student = StudentOperations.new(@persons)
+      student.create_student(self, @persons)
     when '2'
-      create_teacher
+      teacher = TeacherOperations.new(@persons)
+      teacher.create_teacher(self, @persons)
     end
   end
 
-  def stop
-    puts 'Thank you for using this app!'
-    exit
+  def create_rental
+    puts 'Select a book from the following list by number'
+    @books.each_with_index do |book, book_index|
+      puts "#{book_index}) Title: #{book.title}, Author: #{book.author}"
+      chosen_book_index = gets.chomp.to_i
+      puts 'Select a person from the following list by number'
+      @persons.each_with_index do |person, person_index|
+        puts "#{person_index}) Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+      end
+      chosen_person_index = gets.chomp.to_i
+
+      print 'Date (yyyy/mm/dd) '
+      date = gets.chomp
+
+      @rentals.push(Rental.new(date, @books[chosen_book_index], @persons[chosen_person_index]))
+      puts 'Rental created successfully'
+      @menu.find_options(self)
+    end
+  end
+
+  def list_all_rentals
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    puts 'Rentals: '
+    @rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+    end
+    @menu.find_options(self)
   end
 end

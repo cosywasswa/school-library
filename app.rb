@@ -8,7 +8,6 @@ require './rental_create'
 require './create_teacher'
 require './list_rentals'
 require './create_students'
-require 'pry'
 
 class App
   attr_accessor :rentals, :students, :books, :persons
@@ -83,7 +82,6 @@ class App
     print 'Author: '
     author = gets.chop
     @books.push(Book.new(title, author))
-    binding.pry
     puts 'Book created successfully'
     list_options
   end
